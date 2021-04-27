@@ -6,7 +6,8 @@ public class DogController : MonoBehaviour
 {
     public Transform player;
     public int playerDistance = 10;
-
+    
+    public bool isCarryingBall = false;
  
     // Start is called before the first frame update
     void Start()
@@ -37,8 +38,15 @@ class ArriveToPlayer : State
         toPlayer.Normalize();
         Vector3 targetPos = new Vector3(dog.player.position.x + toPlayer.x * dog.playerDistance,0,dog.player.position.z + toPlayer.z * dog.playerDistance);
         owner.GetComponent<Arrive>().targetPosition = targetPos;
-        if (Vector3.Distance(owner.transform.position, targetPos) < 2.0f)
+        if (Vector3.Distance(owner.transform.position, targetPos) < 1.0f)
         {
+            if (dog.isCarryingBall)
+            {
+                dog.isCarryingBall = false;
+                GameObject ball = dog.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject;
+                ball.transform.parent = null;
+                ball.GetComponent<Rigidbody>().useGravity = true;
+            }
             owner.ChangeState(new LookAtPlayer());
         }
         if (GameObject.FindWithTag("ball"))
@@ -108,7 +116,7 @@ class FetchBall : State
         if (Vector3.Distance(owner.transform.position, ball.transform.position) < 1f)
         {
             Transform ballAttach = dogAttachParent.transform.GetChild(0);
-            GameObject.Destroy(ball.GetComponent<Rigidbody>()); 
+            ball.GetComponent<Rigidbody>().useGravity = false; 
             ball.transform.parent = ballAttach;
             ball.transform.localPosition = Vector3.zero;
             ball.gameObject.tag = "Untagged";
@@ -120,6 +128,7 @@ class FetchBall : State
 
     public override void Exit()
     {
+        dog.isCarryingBall = true;
         owner.GetComponent<Arrive>().targetGameObject = null;
         owner.GetComponent<Boid>().velocity = Vector3.zero;
     }

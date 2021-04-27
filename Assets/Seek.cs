@@ -10,6 +10,8 @@ public class Seek : SteeringBehaviour
 
     public Vector3 target = Vector3.zero;
 
+    public Transform hold;
+
     public void OnDrawGizmos()
     {
         if (isActiveAndEnabled && Application.isPlaying)
@@ -40,5 +42,19 @@ public class Seek : SteeringBehaviour
     public void GetBall(GameObject ball)
     {
         targetGameObject = ball;
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if(collider.gameObject.tag == "ball")
+        {
+            TakeBall();
+        }
+    }
+
+    void TakeBall()
+    {
+        targetGameObject.transform.SetParent(hold);
+        targetGameObject.transform.position = hold.position;
     }
 }

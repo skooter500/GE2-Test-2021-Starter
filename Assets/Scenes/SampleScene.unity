@@ -730,7 +730,8 @@ MonoBehaviour:
   seek: {fileID: 1503941572}
   arrive: {fileID: 1503941574}
   followPath: {fileID: 1503941573}
-  returned: 1
+  returned: 0
+  audioSource: {fileID: 1503941577}
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,6 +1208,7 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   slowingDistance: 15
   targetGameObject: {fileID: 963194225}
+  hold: {fileID: 1296423583}
 --- !u!114 &1503941575
 MonoBehaviour:
   m_ObjectHideFlags: 0

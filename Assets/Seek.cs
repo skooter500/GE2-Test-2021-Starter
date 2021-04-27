@@ -14,6 +14,8 @@ public class Seek : SteeringBehaviour
 
     public Player player;
 
+    public bool center;
+
     public void OnDrawGizmos()
     {
         if (isActiveAndEnabled && Application.isPlaying)
@@ -37,7 +39,7 @@ public class Seek : SteeringBehaviour
         
         if (targetGameObject != null)
         {
-            target = new Vector3(targetGameObject.transform.position.x, transform.position.y, targetGameObject.transform.position.z);
+            target = new Vector3(targetGameObject.transform.position.x, 0, targetGameObject.transform.position.z);
         }
 
 
@@ -54,12 +56,13 @@ public class Seek : SteeringBehaviour
     {
         if(collider.gameObject.tag == "ball")
         {
-            TakeBall();
+            if(player.CheckDrop()) TakeBall();
         }
     }
 
     void TakeBall()
     {
+        center = true;
         targetGameObject.transform.SetParent(hold,true);
         targetGameObject.transform.position = hold.position;
         targetGameObject.GetComponent<Rigidbody>().useGravity = false;

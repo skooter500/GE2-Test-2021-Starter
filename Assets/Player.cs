@@ -28,6 +28,10 @@ public class Player : MonoBehaviour
 
     public bool returned;
 
+    public AudioSource audioSource;
+
+    public Transform hold;
+
     //public State[] states;
 
     // Start is called before the first frame update
@@ -67,9 +71,13 @@ public class Player : MonoBehaviour
 
         }
 
+
+        if (seek.center) Center();
+
         if (Go == null || !returned) return;
-        if(Vector3.Distance(Go.transform.position, transform.position) < 5f)
+        if(Vector3.Distance(Go.transform.position, transform.position) < 4f)
         {
+            seek.center = false;
             Destroy(Go);
             returned = false;
             haveBall = true;
@@ -86,12 +94,19 @@ public class Player : MonoBehaviour
 
     }
 
+    public bool CheckDrop()
+    {
+        bool check = false;
+        if (!arrive.dropped) check = true;
+        return check;
+    }
 
 
 
     void Throw(float pow)
     {
         haveBall = false;
+        audioSource.Play();
         Go = Instantiate(ball, transform.position, transform.rotation);
         Go.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * force*pow, ForceMode.Impulse);
         StartCoroutine(AntiSoftLock());
@@ -114,11 +129,18 @@ public class Player : MonoBehaviour
 
     public void Wait()
     {
+        seek.center = true;
         StopAllCoroutines();
         returned = true;
         seek.enabled = true;
         arrive.enabled = false;
         seek.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         //seek.GetBall(gameObject);
+    }
+
+
+    void Center()
+    {
+        if(Go != null) Go.transform.position = hold.position;
     }
 }

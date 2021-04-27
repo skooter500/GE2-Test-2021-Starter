@@ -55,7 +55,7 @@ public class Boid : MonoBehaviour
 
         float clamped = Mathf.Min(ramped, maxSpeed);
         Vector3 desired = clamped * (toTarget / distance);
-
+        desired = new Vector3(desired.x, 0, desired.z);
         return desired - velocity;
     }
 

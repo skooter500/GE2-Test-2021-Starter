@@ -730,6 +730,7 @@ MonoBehaviour:
   seek: {fileID: 1503941572}
   arrive: {fileID: 1503941574}
   followPath: {fileID: 1503941573}
+  returned: 0
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1171,6 +1172,7 @@ MonoBehaviour:
   targetGameObject: {fileID: 0}
   target: {x: 0, y: 0, z: 0}
   hold: {fileID: 1296423583}
+  player: {fileID: 963194230}
 --- !u!114 &1503941573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1204,7 +1206,7 @@ MonoBehaviour:
   boid: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   slowingDistance: 15
-  targetGameObject: {fileID: 0}
+  targetGameObject: {fileID: 963194225}
 --- !u!114 &1503941575
 MonoBehaviour:
   m_ObjectHideFlags: 0

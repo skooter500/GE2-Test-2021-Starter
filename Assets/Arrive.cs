@@ -20,7 +20,13 @@ public class Arrive : SteeringBehaviour
     {
         if (targetGameObject != null)
         {
-            targetPosition = targetGameObject.transform.position;
+            targetPosition = new Vector3(targetGameObject.transform.position.x, transform.position.y, targetGameObject.transform.position.z);
+        }
+
+
+        if(Vector3.Distance(targetPosition, transform.position) < 4.5f)
+        {
+            targetGameObject.GetComponent<Player>().Wait();
         }
     }
 }

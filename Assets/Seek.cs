@@ -30,6 +30,7 @@ public class Seek : SteeringBehaviour
 
     public void Update()
     {
+        
         if (targetGameObject != null)
         {
             target = targetGameObject.transform.position;

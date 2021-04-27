@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44dcf586-aaf6-4e22-bfec-6c307e00cf7f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/DogController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/DogController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

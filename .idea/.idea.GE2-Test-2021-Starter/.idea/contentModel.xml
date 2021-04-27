@@ -13,11 +13,9 @@
         <e p="FollowPath.cs" t="Include" />
         <e p="FPSController.cs" t="Include" />
         <e p="Path.cs" t="Include" />
-        <e p="Player.cs" t="Include" />
         <e p="Seek.cs" t="Include" />
         <e p="StateMachine.cs" t="Include" />
         <e p="SteeringBehaviour.cs" t="Include" />
-        <e p="TailWag.cs" t="Include" />
       </e>
       <e p="GE2-Test-2021-Starter.sln" t="IncludeFlat" />
       <e p="obj" t="ExcludeRecursive" />

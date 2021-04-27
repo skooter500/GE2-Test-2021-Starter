@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (returned)
+        if (haveBall)
         {
             if (Input.GetKey(KeyCode.Space) && !overHeat)
             {
@@ -67,14 +67,22 @@ public class Player : MonoBehaviour
 
         }
 
-        if (Go == null) return;
-        if(Vector3.Distance(Go.transform.position, transform.position) < 3.2f)
+        if (Go == null || !returned) return;
+        if(Vector3.Distance(Go.transform.position, transform.position) < 5f)
         {
             Destroy(Go);
             returned = false;
             haveBall = true;
         }
 
+
+    }
+
+    IEnumerator AntiSoftLock()
+    {
+        yield return new WaitForSeconds(10);
+
+        Wait();
 
     }
 
@@ -86,6 +94,7 @@ public class Player : MonoBehaviour
         haveBall = false;
         Go = Instantiate(ball, transform.position, transform.rotation);
         Go.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * force*pow, ForceMode.Impulse);
+        StartCoroutine(AntiSoftLock());
 
         //if(stateMachine.currentState == null)
         //{
@@ -105,8 +114,11 @@ public class Player : MonoBehaviour
 
     public void Wait()
     {
+        StopAllCoroutines();
         returned = true;
         seek.enabled = true;
         arrive.enabled = false;
+        seek.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //seek.GetBall(gameObject);
     }
 }

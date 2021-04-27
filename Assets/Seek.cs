@@ -39,6 +39,10 @@ public class Seek : SteeringBehaviour
         {
             target = new Vector3(targetGameObject.transform.position.x, transform.position.y, targetGameObject.transform.position.z);
         }
+
+
+
+
     }
 
     public void GetBall(GameObject ball)

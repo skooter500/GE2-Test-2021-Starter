@@ -16,9 +16,15 @@ public class Player : MonoBehaviour
 
     public Image image;
 
-    public StateMachine stateMachine;
+    //public StateMachine stateMachine;
 
-    public State[] states;
+
+    public Seek seek;
+    public Arrive arrive;
+    public FollowPath followPath;
+
+
+    //public State[] states;
 
     // Start is called before the first frame update
     void Start()
@@ -59,9 +65,11 @@ public class Player : MonoBehaviour
         GameObject Go = Instantiate(ball, transform.position, transform.rotation);
         Go.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * force*pow, ForceMode.Impulse);
 
-        if(stateMachine.currentState == null)
-        {
-            stateMachine.ChangeState(states[0]);
-        }
+        //if(stateMachine.currentState == null)
+        //{
+        //    stateMachine.ChangeState(states[0]);
+        //}
+        seek.GetBall(Go);
+
     }
 }

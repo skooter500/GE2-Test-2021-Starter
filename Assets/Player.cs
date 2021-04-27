@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
     {
         yield return new WaitForSeconds(10);
 
-        Wait();
+        Retry();
 
     }
 
@@ -129,6 +129,7 @@ public class Player : MonoBehaviour
 
     public void Wait()
     {
+        arrive.dropped = false;
         seek.center = true;
         StopAllCoroutines();
         returned = true;
@@ -136,6 +137,16 @@ public class Player : MonoBehaviour
         arrive.enabled = false;
         seek.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         //seek.GetBall(gameObject);
+    }
+
+    private void Retry()
+    {
+        arrive.dropped = false;
+        StopAllCoroutines();
+        returned = true;
+        seek.enabled = true;
+        arrive.enabled = false;
+        seek.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 
 

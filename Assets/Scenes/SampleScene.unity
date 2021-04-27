@@ -597,6 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1181318722}
   - component: {fileID: 1181318723}
+  - component: {fileID: 1181318724}
   m_Layer: 0
   m_Name: tail
   m_TagString: Untagged
@@ -631,10 +632,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9abdc16a6d6624d9b99b72bafa2fee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   frequency: 1
   amplitude: 20
   b: {fileID: 0}
   theta: 0
+=======
+--- !u!114 &1181318724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181318721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3184b7ba020daf4429634a3503ba75c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choseAngle: 30
+  rotationSpeedFactor: 20
+>>>>>>> Stashed changes
 --- !u!1 &1296423582
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +893,75 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
+=======
+--- !u!114 &1503941571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503941570}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d60a1b42aa563b4fab355ebfdf12f6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weight: 1
+  force: {x: 0, y: 0, z: 0}
+  boid: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  slowingDistance: 15
+  targetGameObject: {fileID: 0}
+--- !u!114 &1503941572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503941570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1e70df60db186419c47ae907466a95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updatesPerSecond: 5
+--- !u!114 &1503941573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503941570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9f0e392addaadb46a3c4544727ce74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 963194228}
+  playerDistance: 10
+  isCarryingBall: 0
+--- !u!114 &1503941574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503941570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a081933ccb1aa84aa0a0b8ccd64439d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  mass: 1
+  damping: 0.01
+  banking: 0.1
+  maxSpeed: 5
+  maxForce: 10
+>>>>>>> Stashed changes
 --- !u!4 &1503941576
 Transform:
   m_ObjectHideFlags: 0

@@ -41,6 +41,10 @@ class ArriveToPlayer : State
         {
             owner.ChangeState(new LookAtPlayer());
         }
+        if (GameObject.FindWithTag("ball"))
+        {
+            owner.ChangeState(new FetchBall());
+        }
     }
 
     public override void Exit()
@@ -72,11 +76,52 @@ class LookAtPlayer : State
         {
             owner.ChangeState(new ArriveToPlayer());
         }
+
+        if (GameObject.FindWithTag("ball"))
+        {
+            owner.ChangeState(new FetchBall());
+        }
     }
 
     public override void Exit()
     {
-        base.Exit();
+       
+    }
+}
+
+class FetchBall : State
+{
+    private DogController dog;
+    private GameObject ball;
+    private GameObject dogAttachParent;
+    public override void Enter()
+    {
+        dog = owner.GetComponent<DogController>();
+        owner.GetComponent<Arrive>().enabled = true;
+        owner.GetComponent<Arrive>().targetGameObject = GameObject.FindWithTag("ball");
+        dogAttachParent = dog.gameObject.transform.Find("dog").gameObject;
+        ball = owner.GetComponent<Arrive>().targetGameObject;
+    }
+
+    public override void Think()
+    {
+        if (Vector3.Distance(owner.transform.position, ball.transform.position) < 1f)
+        {
+            Transform ballAttach = dogAttachParent.transform.GetChild(0);
+            GameObject.Destroy(ball.GetComponent<Rigidbody>()); 
+            ball.transform.parent = ballAttach;
+            ball.transform.localPosition = Vector3.zero;
+            ball.gameObject.tag = "Untagged";
+            
+        }
+        if(ball.tag == "Untagged")
+            owner.ChangeState(new ArriveToPlayer());
+    }
+
+    public override void Exit()
+    {
+        owner.GetComponent<Arrive>().targetGameObject = null;
+        owner.GetComponent<Boid>().velocity = Vector3.zero;
     }
 }
 

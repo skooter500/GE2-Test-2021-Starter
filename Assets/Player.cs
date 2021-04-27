@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public GameObject ballPrefab;
 
     public int force;
+    
     // Start is called before the first frame update
     void Start()
     {

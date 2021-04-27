@@ -104,6 +104,7 @@ class FetchBall : State
     private GameObject dogAttachParent;
     public override void Enter()
     {
+        owner.GetComponent<AudioSource>().Play();
         dog = owner.GetComponent<DogController>();
         owner.GetComponent<Arrive>().enabled = true;
         owner.GetComponent<Arrive>().targetGameObject = GameObject.FindWithTag("ball");

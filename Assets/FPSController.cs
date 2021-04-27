@@ -69,6 +69,7 @@ public class FPSController : MonoBehaviour
         transform.position += mainCamera.transform.right * units;
             
     }
+    
 
     bool active = false;
 
